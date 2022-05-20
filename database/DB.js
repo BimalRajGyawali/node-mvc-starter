@@ -1,11 +1,11 @@
-const mysql = require("mysql")
+const mysql = require("promise-mysql");
 
-function makeConnection() {
-    return mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "test"
-    })
-}
-module.exports = { makeConnection };
+const pool = mysql.createPool({
+  connectionLimit:10,
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "test",
+});
+
+module.exports = pool;
