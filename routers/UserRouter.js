@@ -3,8 +3,8 @@ const router = express.Router()
 
 const userController = require("../controllers/UserController")
 
-router.get("/", userController.getAll)
-router.get("/:id", userController.findById)
+router.get("/", userController.getAllUsers)
+router.get("/:id", userController.getById)
 
 
 module.exports = router
