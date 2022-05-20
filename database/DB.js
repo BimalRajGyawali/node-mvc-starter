@@ -1,14 +1,11 @@
 const mysql = require("mysql")
 
-class DB{
-    makeConnection(){
-        return mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "",
-            database: "node-mvc"
-        })
-    }
+function makeConnection() {
+    return mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "test"
+    })
 }
-
-module.exports = new DB();
+module.exports = { makeConnection };
