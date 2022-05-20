@@ -1,23 +1,26 @@
-const userService = require("../services/UserService")
+const res = require("express/lib/response");
+const userService = require("../services/UserService");
 
-class UserController{
-    getAll(req, res){
-        
-        userService.getAll((err)=>{
-            res.json(err)
-        }, (users)=>{
-            console.log(users);
-            res.render("users", {users: users})
-            
-        })
-    }
-    findById(req, res){
-        userService.findById(req.params.id, (err)=>{
-            res.json(err)
-        }, (user)=>{
-            res.render("user", {user: user})
-        })
+async function getAllUsers(req, res) {
+    try {
+        const users = await userService.getAllUsers();
+        res.render("users", { users });
+
+    } catch (err) {
+        res.json({ message: "Error" });
     }
 }
 
-module.exports = new UserController()
+async function getById(req, res) {
+    const {id} = req.params;
+    try {
+        const user = await userService.getById(id);
+
+        res.render("user", { user })
+
+    } catch (err) {
+        res.json({ message: "Error" });
+    }
+}
+
+module.exports = { getAllUsers, getById };

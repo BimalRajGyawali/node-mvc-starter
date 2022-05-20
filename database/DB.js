@@ -1,14 +1,11 @@
-const mysql = require("mysql")
+const mysql = require("promise-mysql");
 
-class DB{
-    makeConnection(){
-        return mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "",
-            database: "node-mvc"
-        })
-    }
-}
+const pool = mysql.createPool({
+  connectionLimit:10,
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "test",
+});
 
-module.exports = new DB();
+module.exports = pool;
