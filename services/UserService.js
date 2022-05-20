@@ -13,4 +13,4 @@ async function getById(id){
     return user;
 }
 
-module.exports = {getAllUsers, getById}
+module.exports = { getAllUsers, getById }
