@@ -10,7 +10,7 @@ async function getById(id){
     const sql = "SELECT * FROM users WHERE id = ?";
     const user = await (await pool).query({sql, values:[id]});
 
-    return user;
+    return user[0];
 }
 
 module.exports = { getAllUsers, getById }
