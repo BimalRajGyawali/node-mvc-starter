@@ -4,7 +4,7 @@ const userService = require("../services/UserService");
 async function getAllUsers(req, res) {
     try {
         const users = await userService.getAllUsers();
-        res.json(users);
+        res.render("users", { users });
 
     } catch (err) {
         res.json({ message: "Error" });
@@ -15,7 +15,8 @@ async function getById(req, res) {
     const {id} = req.params;
     try {
         const user = await userService.getById(id);
-        res.json(user);
+
+        res.render("user", { user })
 
     } catch (err) {
         res.json({ message: "Error" });
